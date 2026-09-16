@@ -16,13 +16,12 @@ inputs:
   prompt:
     description: "Custom prompt to override the default prompt"
     required: false
-# 如用OIDC token的話 就不用這個
+
   use_github_token:
     description: "Use GITHUB_TOKEN directly instead of MyCoder App token exchange. When true, skips OIDC and uses the GITHUB_TOKEN env var."
     required: false
     default: "false"
 
-# /oc 確認沒有
   mentions:
     description: "Comma-separated list of trigger phrases (case-insensitive). Defaults to '/mycoder'"
     required: false
@@ -30,7 +29,7 @@ inputs:
   variant:
     description: "Model variant for provider-specific reasoning effort (e.g., high, max, minimal)"
     required: false
-# OCID api URL change
+
   oidc_base_url:
     description: "Base URL for OIDC token exchange API. Only required when running a custom GitHub App install. Defaults to https://api.afs-mycoder.twcc.ai"
     required: false
