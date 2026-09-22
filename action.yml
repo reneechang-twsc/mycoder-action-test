@@ -49,7 +49,7 @@ runs:
       uses: actions/cache@v4
       with:
         path: ~/.mycoder/bin
-        key: mycoder-${{ runner.os }}-${{ runner.arch }}-${{ steps.version.outputs.version }}
+        key: mycoder-${{ runner.os }}-${{ runner.arch }}-${{ steps.version.outputs.version }}-${{ github.run_id }}
 
     - name: Install mycoder
       if: steps.cache.outputs.cache-hit != 'true'
