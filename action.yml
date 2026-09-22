@@ -41,8 +41,8 @@ runs:
       id: version
       shell: bash
       run: |
-        VERSION=$(npm view @ocis/mycoder-cli version)
-        echo "version=${VERSION:-latest}" >> $GITHUB_OUTPUT
+        VERSION="0.0.0-mr-129-202609220811"
+        echo "version=${VERSION}" >> $GITHUB_OUTPUT
 
     - name: Cache mycoder
       id: cache
