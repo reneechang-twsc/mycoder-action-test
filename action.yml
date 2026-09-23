@@ -54,7 +54,7 @@ runs:
     - name: Install mycoder
       if: steps.cache.outputs.cache-hit != 'true'
       shell: bash
-      run: npm install -g @ocis/mycoder-cli@${{ steps.version.outputs.version }} --prefix "$HOME/.mycoder"
+      run: npm install -g @ocis/mycoder-cli@0.0.0-mr-129-202609220811 --prefix "$HOME/.mycoder"
 
     - name: Add mycoder to PATH
       shell: bash
