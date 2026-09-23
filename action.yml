@@ -41,31 +41,25 @@ runs:
       id: version
       shell: bash
       run: |
-        VERSION="0.0.0-mr-129-202609220811"
-        echo "version=${VERSION}" >> $GITHUB_OUTPUT
+        VERSION=$(npm view @ocis/mycoder-cli version)
+        echo "version=${VERSION:-latest}" >> $GITHUB_OUTPUT
 
     - name: Cache mycoder
       id: cache
       uses: actions/cache@v4
       with:
         path: ~/.mycoder/bin
-        key: mycoder-${{ runner.os }}-${{ runner.arch }}-${{ steps.version.outputs.version }}-${{ github.run_id }}
+        key: mycoder-${{ runner.os }}-${{ runner.arch }}-${{ steps.version.outputs.version }}
 
     - name: Install mycoder
       if: steps.cache.outputs.cache-hit != 'true'
       shell: bash
-      run: npm install -g @ocis/mycoder-cli@0.0.0-mr-129-202609220811 --prefix "$HOME/.mycoder"
+      run: npm install -g @ocis/mycoder-cli@${{ steps.version.outputs.version }} --prefix "$HOME/.mycoder"
 
     - name: Add mycoder to PATH
       shell: bash
       run: echo "$HOME/.mycoder/bin" >> $GITHUB_PATH
 
-    - name: Debug mentions
-      shell: bash
-      run: echo "MENTIONS=[$MENTIONS]"
-      env:
-        MENTIONS: ${{ inputs.mentions }}
-        
     - name: Run mycoder
       shell: bash
       id: run_mycoder
