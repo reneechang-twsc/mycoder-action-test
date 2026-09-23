@@ -60,6 +60,12 @@ runs:
       shell: bash
       run: echo "$HOME/.mycoder/bin" >> $GITHUB_PATH
 
+    - name: Debug mentions
+      shell: bash
+      run: echo "MENTIONS=[$MENTIONS]"
+      env:
+        MENTIONS: ${{ inputs.mentions }}
+        
     - name: Run mycoder
       shell: bash
       id: run_mycoder
