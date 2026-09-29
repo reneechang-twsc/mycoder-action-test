@@ -41,7 +41,7 @@ runs:
       id: version
       shell: bash
       run: |
-        VERSION="0.0.0-mr-129-202609220811"
+        VERSION="0.0.0-mr-129-202609290237"
         echo "version=${VERSION:-latest}" >> $GITHUB_OUTPUT
 
     - name: Cache mycoder
@@ -54,7 +54,7 @@ runs:
     - name: Install mycoder
       if: steps.cache.outputs.cache-hit != 'true'
       shell: bash
-      run: npm install -g @ocis/mycoder-cli@0.0.0-mr-129-202609220811 --prefix "$HOME/.mycoder"
+      run: npm install -g @ocis/mycoder-cli@0.0.0-mr-129-202609290237 --prefix "$HOME/.mycoder"
 
     - name: Add mycoder to PATH
       shell: bash
